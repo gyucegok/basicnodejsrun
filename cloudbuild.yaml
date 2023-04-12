@@ -31,9 +31,21 @@ steps:
   args:
   - 'sed'
   - '-i'
-  - "./knative-manifests/deploy*.yaml"
+  - './knative-manifests/deploy-test.yaml'
   - '-e'
   - 's/<COMMITSHA>/${COMMIT_SHA}/g'
+
+# We have pushed the container image with the GIT commit SHA, we also
+# need to hydrate our kubernetes manifests with the same SHA in order being
+# able to pull it in deploy stage
+- name: 'bash'
+  args:
+  - 'sed'
+  - '-i'
+  - './knative-manifests/deploy-prod.yaml'
+  - '-e'
+  - 's/<COMMITSHA>/${COMMIT_SHA}/g'
+
 
 # This step creates a release in Cloud Deploy, promoting the image 
 # between environments will be done further in Cloud Deploy
