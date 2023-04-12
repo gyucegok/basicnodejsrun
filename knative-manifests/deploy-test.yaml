@@ -1,0 +1,9 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: basicnodejs
+spec:
+  template:
+    spec:
+      containers:
+      - image: europe-west1-docker.pkg.dev/gyucegok-alto/dock/basicnodejs:<COMMITSHA>
