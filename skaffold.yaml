@@ -6,10 +6,10 @@ profiles:
 - name: test
   manifests:
     rawYaml:
-    - deploy-test.yaml
+    - ./knative-manifests/deploy-test.yaml
 - name: prod
   manifests:
     rawYaml:
-    - deploy-prod.yaml
+    - ./knative-manifests/deploy-prod.yaml
 deploy:
   cloudrun: {}
