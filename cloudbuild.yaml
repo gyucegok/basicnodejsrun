@@ -31,9 +31,9 @@ steps:
   args:
   - 'sed'
   - '-i'
-  - './kubernetes-manifests/basicnodejsdeploy.yaml'
+  - './knative-manifests/deploy*.yaml'
   - '-e'
-  - 's/COMMITSHA/${COMMIT_SHA}/g'
+  - 's/<COMMITSHA>/${COMMIT_SHA}/g'
 
 # This step creates a release in Cloud Deploy, promoting the image 
 # between environments will be done further in Cloud Deploy
@@ -42,7 +42,7 @@ steps:
   args:
     [
       "deploy", "releases", "create", "rel-${SHORT_SHA}",
-      "--delivery-pipeline", "nodejsgkepipe",
+      "--delivery-pipeline", "nodejsrunpipe",
       "--region", "us-east1",
       "--annotations", "commitId=${REVISION_ID}",
       "--images", "basicnodejs=europe-west1-docker.pkg.dev/gyucegok-alto/dock/basicnodejs:${COMMIT_SHA}"

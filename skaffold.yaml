@@ -1,9 +1,15 @@
-# To learn more about the skaffold.yaml schema visit
-# https://skaffold.dev/docs/references/yaml/
-apiVersion: skaffold/v2beta16
+apiVersion: skaffold/v3alpha1
 kind: Config
-# defines the Kubernetes manifests to deploy on each run
+metadata: 
+  name: cloud-run-app
+profiles:
+- name: test
+  manifests:
+    rawYaml:
+    - deploy-test.yaml
+- name: prod
+  manifests:
+    rawYaml:
+    - deploy-prod.yaml
 deploy:
-  kubectl:
-    manifests:
-    - kubernetes-manifests/**
+  cloudrun: {}
