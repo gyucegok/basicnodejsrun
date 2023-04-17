@@ -54,7 +54,7 @@ steps:
   args:
     [
       "deploy", "releases", "create", "rel-${SHORT_SHA}",
-      "--delivery-pipeline", "nodejsrunpipe",
+      "--delivery-pipeline", "nodejs-run-pipe",
       "--region", "us-east1",
       "--annotations", "commitId=${REVISION_ID}",
       "--images", "basicnodejs=europe-west1-docker.pkg.dev/gyucegok-alto/dock/basicnodejs:${COMMIT_SHA}"
