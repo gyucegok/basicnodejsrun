@@ -15,7 +15,7 @@ serialPipeline:
          cloudRun:
            automaticTrafficControl: true
        canaryDeployment:
-          percentages: [10]
+          percentages: [25,50]
           verify: false
 ---
 
@@ -33,5 +33,6 @@ kind: Target
 metadata:
  name: prod-run
 description: cloud run prod service
+requireApproval: true
 run:
  location: projects/gyucegok-alto/locations/us-east1
